@@ -9,13 +9,18 @@ license = "MIT/Apache-2.0"
 categories = ["asynchronous", "database"]
 
 [dependencies]
-async-trait = "0.1.42"
-diesel = { version = "1.4.7", default-features = false, features = ["r2d2"] }
-futures = { version = "0.3.15", default-features = false }
+async-trait = "0.1.51"
+diesel = { version = "1.4.8", default-features = false, features = ["r2d2"] }
+futures = { version = "0.3.17", default-features = false }
 r2d2 = "0.8.9"
-tokio = { version = "1.6.1", default-features = false, features = ["rt-multi-thread"] }
+tokio = { version = "1.12.0", default-features = false, features = ["rt-multi-thread"] }
 
 [dev-dependencies]
-diesel = { version = "1.4.7", default-features = false, features = ["postgres", "uuidv07"] }
-uuid = { version = "0.8.1", features = ["v4"] }
-tokio = { version = "1.6.1", default-features = false, features = ["full"] }
+diesel = { version = "1.4.8", default-features = false, features = ["postgres", "uuidv07"] }
+uuid = { version = "0.8.2", features = ["v4"] }
+tokio = { version = "1.12.0", default-features = false, features = ["full"] }
+tokio-macros = { version = "1.4.0" }
+
+[[example]]
+name = "simple"
+path = "examples/simple.rs"

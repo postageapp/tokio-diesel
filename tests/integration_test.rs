@@ -17,9 +17,11 @@ table! {
     }
 }
 
-#[tokio::test(flavor = "multi_thread")]
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 async fn test_db_ops() -> Result<(), Box<dyn Error>> {
-    let manager = ConnectionManager::<PgConnection>::new("postgres://postgres@localhost");
+    let db = std::env::var("PG").map(|e| e.to_string()).unwrap_or_else(|_| "postgres://postgres@localhost".to_string());
+
+    let manager = ConnectionManager::<PgConnection>::new(db);
     let pool = Pool::builder().build(manager)?;
 
     let _ = sql_query(include_str!("./create_users.sql"))

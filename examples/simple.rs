@@ -2,6 +2,7 @@
 extern crate diesel;
 
 use diesel::{
+    PgConnection,
     prelude::*,
     r2d2::{ConnectionManager, Pool},
 };
@@ -20,7 +21,7 @@ table! {
 async fn main() -> Result<(), Box<dyn Error>> {
     // Connect
     let manager =
-        ConnectionManager::<PgConnection>::new("postgres://postgres@localhost/tokio_diesel__test");
+        ConnectionManager::<PgConnection>::new("postgres://localhost/tokio_diesel__test");
     let pool = Pool::builder().build(manager)?;
 
     // Add
