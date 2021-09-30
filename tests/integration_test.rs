@@ -17,6 +17,8 @@ table! {
     }
 }
 
+// NOTE: Test debugging output can be shown with `cargo test -- --nocapture`
+
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 async fn test_db_ops() -> Result<(), Box<dyn Error>> {
     let db = std::env::var("PG").map(|e| e.to_string()).unwrap_or_else(|_| "postgres://postgres@localhost".to_string());

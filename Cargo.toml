@@ -16,10 +16,10 @@ r2d2 = "0.8.9"
 tokio = { version = "1.12.0", default-features = false, features = ["rt-multi-thread"] }
 
 [dev-dependencies]
-diesel = { version = "1.4.8", default-features = false, features = ["postgres", "uuidv07"] }
+diesel = { version = "1.4.8", default-features = false, features = ["r2d2", "postgres", "uuidv07"] }
 uuid = { version = "0.8.2", features = ["v4"] }
 tokio = { version = "1.12.0", default-features = false, features = ["full"] }
-tokio-macros = { version = "1.4.0" }
+tokio-macros = { version = "=1.4.0" }
 
 [[example]]
 name = "simple"
